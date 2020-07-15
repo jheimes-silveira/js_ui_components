@@ -1,0 +1,113 @@
+import 'package:example/page_button.dart';
+import 'package:example/page_list_paginator_view.dart';
+import 'package:example/page_list_view.dart';
+import 'package:example/page_text_field.dart';
+import 'package:flutter/material.dart';
+import 'package:js_ui_components/src/widgets/js_button.dart';
+
+import 'page_circular_avatar.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        primaryColor: Colors.blue,
+        accentColor: Colors.green,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  MyHomePage({Key key, this.title}) : super(key: key);
+
+  final String title;
+
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: Center(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              JsButton(
+                style: JsButtonStyle.contained,
+                text: "Buttons",
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => PageButton()),
+                  );
+                },
+              ),
+              SizedBox(height: 16),
+              JsButton(
+                style: JsButtonStyle.contained,
+                text: "TextField",
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => PageTextField()),
+                  );
+                },
+              ),
+              SizedBox(height: 16),
+              JsButton(
+                style: JsButtonStyle.contained,
+                text: "Circular avatar",
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => PageCircularAvatar()),
+                  );
+                },
+              ),
+              SizedBox(height: 16),
+              JsButton(
+                style: JsButtonStyle.contained,
+                text: "Listview",
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => PageListView()),
+                  );
+                },
+              ),
+              SizedBox(height: 16),
+              JsButton(
+                style: JsButtonStyle.contained,
+                text: "ListPaginatorview",
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => PageListPaginatorView()),
+                  );
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
