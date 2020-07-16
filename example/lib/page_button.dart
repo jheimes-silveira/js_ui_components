@@ -45,7 +45,7 @@ class _PageButtonState extends State<PageButton> {
               JsButton(
                 style: JsButtonStyle.contained,
                 text: "contained MAX",
-                mainAxisSize: MainAxisSize.max,
+              
                 onPressed: () {},
               ),
               SizedBox(height: 16),
@@ -73,7 +73,7 @@ class _PageButtonState extends State<PageButton> {
               JsButton(
                 style: JsButtonStyle.outlined,
                 text: "outlined disable",
-                mainAxisSize: MainAxisSize.max,
+              
                 onPressed: () {},
               ),
               SizedBox(height: 16),

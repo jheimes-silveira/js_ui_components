@@ -1,8 +1,8 @@
 name: js_ui_components
 description: A new Flutter package project.
 version: 0.0.1
-author:
-homepage:
+author: Jheime Silveira
+homepage: https://github.com/jheimes-silveira/js_ui_components.git
 
 environment:
   sdk: ">=2.7.0 <3.0.0"

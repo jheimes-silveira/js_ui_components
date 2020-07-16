@@ -17,6 +17,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
+        buttonTheme: ButtonThemeData(
+          buttonColor: Colors.yellow,
+          height: 40,
+          disabledColor: Colors.grey[300],
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(8.0)),
+          ),
+        ),
         primarySwatch: Colors.blue,
         primaryColor: Colors.blue,
         accentColor: Colors.green,
