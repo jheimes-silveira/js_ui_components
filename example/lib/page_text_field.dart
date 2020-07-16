@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:js_ui_components/src/widgets/js_text_field.dart';
-import 'package:js_ui_components/src/widgets/js_text_field_password.dart';
+import 'package:js_ui_components/js_ui_components.dart';
 
 class PageTextField extends StatefulWidget {
   @override

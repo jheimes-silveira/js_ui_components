@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:js_ui_components/src/widgets/js_list_paginator_view.dart';
-import 'package:js_ui_components/src/widgets/js_circular_avatar.dart';
-import 'package:js_ui_components/src/model/paginator.dart';
+import 'package:js_ui_components/js_ui_components.dart';
 
 class PageListPaginatorView extends StatefulWidget {
   @override

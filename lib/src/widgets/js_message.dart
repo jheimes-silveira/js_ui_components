@@ -1,5 +1,3 @@
-library js_message;
-
 import 'package:flutter/material.dart';
 
 class JsMessage extends StatelessWidget {

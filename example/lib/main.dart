@@ -3,7 +3,7 @@ import 'package:example/page_list_paginator_view.dart';
 import 'package:example/page_list_view.dart';
 import 'package:example/page_text_field.dart';
 import 'package:flutter/material.dart';
-import 'package:js_ui_components/src/widgets/js_button.dart';
+import 'package:js_ui_components/js_ui_components.dart';
 
 import 'page_circular_avatar.dart';
 

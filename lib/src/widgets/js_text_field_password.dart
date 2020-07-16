@@ -1,5 +1,3 @@
-library js_text_field_password;
-
 import 'package:flutter/material.dart';
 import 'package:js_ui_components/src/widgets/js_text_field.dart';
 

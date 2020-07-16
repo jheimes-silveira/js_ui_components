@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:js_ui_components/src/widgets/js_button.dart';
+import 'package:js_ui_components/js_ui_components.dart';
 
 class PageButton extends StatefulWidget {
   @override

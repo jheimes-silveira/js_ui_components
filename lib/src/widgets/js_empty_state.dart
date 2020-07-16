@@ -1,5 +1,3 @@
-library js_empty_state;
-
 import 'package:flutter/material.dart';
 
 class JsEmptyState extends StatelessWidget {

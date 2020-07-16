@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:js_ui_components/src/widgets/js_circular_avatar.dart';
+import 'package:js_ui_components/js_ui_components.dart';
 
 class PageCircularAvatar extends StatefulWidget {
   @override

@@ -1,5 +1,3 @@
-library js_button;
-
 import 'package:flutter/material.dart';
 import 'package:js_ui_components/src/widgets/js_progress.dart';
 
