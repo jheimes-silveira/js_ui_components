@@ -83,13 +83,18 @@ class _PageButtonState extends State<PageButton> {
               SizedBox(height: 16),
               JsButton(
                 style: JsButtonStyle.gradient,
-                text: "gradient",
+                child: Center(child: Text("gradient")),
                 onPressed: () {},
               ),
               SizedBox(height: 16),
               JsButton(
                 style: JsButtonStyle.gradient,
-                text: "gradient disable",
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text("gradient"),
+                  ],
+                ),
                 enabled: false,
               ),
               SizedBox(height: 16),

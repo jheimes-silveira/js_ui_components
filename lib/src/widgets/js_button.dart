@@ -101,36 +101,29 @@ class JsButton extends StatelessWidget {
           .borderRadius;
     }
 
-    return Container(
-      child: FlatButton(
-        textColor: textColor ?? Colors.white,
-        textTheme: getTextTheme(context),
+    return FlatButton(
+      textColor: textColor ?? Colors.white,
+      textTheme: getTextTheme(context),
+      focusColor: focusColor,
+      splashColor: splashColor,
+      disabledColor: disabledColor,
+      disabledTextColor: disabledTextColor,
+      onPressed: onPressed,
+      padding: EdgeInsets.zero,
+      child: Ink(
         color: color,
-        focusColor: focusColor,
-        splashColor: splashColor,
-        disabledColor: disabledColor,
-        disabledTextColor: disabledTextColor,
-        onPressed: onPressed,
-        padding: EdgeInsets.zero,
-        child: Ink(
-          height: Theme.of(context).buttonTheme.height,
-          decoration: BoxDecoration(
-            borderRadius: border,
-            color: onPressed == null
-                ? Theme.of(context).buttonTheme.getDisabledFillColor(
-                      RaisedButton(onPressed: () {}),
-                    )
-                : null,
-            gradient: _getColorGradient(onPressed, context),
-          ),
-          padding: Theme.of(context).buttonTheme.padding,
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              child,
-            ],
-          ),
+        height: Theme.of(context).buttonTheme.height,
+        decoration: BoxDecoration(
+          borderRadius: border,
+          color: onPressed == null
+              ? Theme.of(context).buttonTheme.getDisabledFillColor(
+                    RaisedButton(onPressed: () {}),
+                  )
+              : null,
+          gradient: _getColorGradient(onPressed, context),
         ),
+        padding: Theme.of(context).buttonTheme.padding,
+        child: child,
       ),
     );
   }
