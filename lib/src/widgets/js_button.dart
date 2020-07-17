@@ -91,45 +91,44 @@ class JsButton extends StatelessWidget {
       );
     }
 
-    if (style == JsButtonStyle.gradient) {
-      BorderRadius border = BorderRadius.circular(0);
+    BorderRadius border = BorderRadius.circular(0);
 
-      if (Theme.of(context).buttonTheme.shape is RoundedRectangleBorder) {
-        border = (Theme.of(context).buttonTheme.shape as RoundedRectangleBorder)
-            .borderRadius;
-      }
-
-      return Container(
-        child: FlatButton(
-          textColor: textColor ?? Colors.white,
-          onPressed: onPressed,
-          padding: EdgeInsets.zero,
-          child: Ink(
-            height: Theme.of(context).buttonTheme.height,
-            decoration: BoxDecoration(
-              borderRadius: border,
-              color: onPressed == null
-                  ? Theme.of(context).buttonTheme.getDisabledFillColor(
-                        RaisedButton(onPressed: () {}),
-                      )
-                  : null,
-              gradient: _getColorGradient(onPressed, context),
-            ),
-            padding: Theme.of(context).buttonTheme.padding,
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                child,
-              ],
-            ),
-          ),
-        ),
-      );
+    if (Theme.of(context).buttonTheme.shape is RoundedRectangleBorder) {
+      border = (Theme.of(context).buttonTheme.shape as RoundedRectangleBorder)
+          .borderRadius;
     }
 
-    return MaterialButton(
-      child: Text(text),
-      onPressed: onPressed,
+    return Container(
+      child: FlatButton(
+        textColor: textColor ?? Colors.white,
+        textTheme: getTextTheme(context),
+        color: color,
+        focusColor: focusColor,
+        splashColor: splashColor,
+        disabledColor: disabledColor,
+        disabledTextColor: disabledTextColor,
+        onPressed: onPressed,
+        padding: EdgeInsets.zero,
+        child: Ink(
+          height: Theme.of(context).buttonTheme.height,
+          decoration: BoxDecoration(
+            borderRadius: border,
+            color: onPressed == null
+                ? Theme.of(context).buttonTheme.getDisabledFillColor(
+                      RaisedButton(onPressed: () {}),
+                    )
+                : null,
+            gradient: _getColorGradient(onPressed, context),
+          ),
+          padding: Theme.of(context).buttonTheme.padding,
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              child,
+            ],
+          ),
+        ),
+      ),
     );
   }
 
