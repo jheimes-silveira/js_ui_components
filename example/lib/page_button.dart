@@ -26,6 +26,12 @@ class _PageButtonState extends State<PageButton> {
                 text: "contained",
                 onPressed: () {},
               ),
+              JsButton(
+                style: JsButtonStyle.contained,
+                text: "contained custom Color",
+                onPressed: () {},
+              
+              ),
               SizedBox(height: 16),
               JsButton(
                 style: JsButtonStyle.contained,
@@ -45,7 +51,6 @@ class _PageButtonState extends State<PageButton> {
               JsButton(
                 style: JsButtonStyle.contained,
                 text: "contained MAX",
-              
                 onPressed: () {},
               ),
               SizedBox(height: 16),
@@ -73,7 +78,6 @@ class _PageButtonState extends State<PageButton> {
               JsButton(
                 style: JsButtonStyle.outlined,
                 text: "outlined disable",
-              
                 onPressed: () {},
               ),
               SizedBox(height: 16),
