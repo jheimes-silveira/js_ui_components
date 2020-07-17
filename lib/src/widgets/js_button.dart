@@ -18,6 +18,7 @@ class JsButton extends StatelessWidget {
   final Color splashColor;
   final Color disabledColor;
   final Color disabledTextColor;
+  final Color highlightedBorderColor;
   JsButton({
     this.style = JsButtonStyle.contained,
     this.text = "",
@@ -35,6 +36,7 @@ class JsButton extends StatelessWidget {
     this.splashColor,
     this.disabledColor,
     this.disabledTextColor,
+    this.highlightedBorderColor,
   });
 
   @override
@@ -71,6 +73,7 @@ class JsButton extends StatelessWidget {
         color: color,
         focusColor: focusColor,
         splashColor: splashColor,
+        highlightedBorderColor: highlightedBorderColor,
         disabledBorderColor: disabledTextColor,
         disabledTextColor: disabledTextColor,
         onPressed: onPressed,
