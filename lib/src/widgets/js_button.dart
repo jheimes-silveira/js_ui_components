@@ -12,6 +12,7 @@ class JsButton extends StatelessWidget {
   final bool loading;
   final ButtonTextTheme textTheme;
   final Gradient gradient;
+  final BorderSide borderSide;
   final Color textColor;
   final Color color;
   final Color focusColor;
@@ -19,6 +20,10 @@ class JsButton extends StatelessWidget {
   final Color disabledColor;
   final Color disabledTextColor;
   final Color highlightedBorderColor;
+  final Color disabledBorderColor;
+  final Color highlightColor;
+  final Color hoverColor;
+
   JsButton({
     this.style = JsButtonStyle.contained,
     this.text = "",
@@ -37,6 +42,10 @@ class JsButton extends StatelessWidget {
     this.disabledColor,
     this.disabledTextColor,
     this.highlightedBorderColor,
+    this.highlightColor,
+    this.borderSide,
+    this.hoverColor,
+    this.disabledBorderColor,
   });
 
   @override
@@ -73,22 +82,31 @@ class JsButton extends StatelessWidget {
         color: color,
         focusColor: focusColor,
         splashColor: splashColor,
+        hoverColor: hoverColor,
         highlightedBorderColor: highlightedBorderColor,
-        disabledBorderColor: disabledTextColor,
+        disabledBorderColor: disabledBorderColor,
         disabledTextColor: disabledTextColor,
+        highlightColor: highlightColor,
         onPressed: onPressed,
       );
     }
 
     if (style == JsButtonStyle.text) {
-      return FlatButton(
+      return OutlineButton(
         child: child,
         textTheme: getTextTheme(context),
         textColor: textColor,
         color: color,
+        highlightColor: highlightColor ?? Colors.transparent,
+        highlightedBorderColor: highlightedBorderColor ?? Colors.transparent,
         focusColor: focusColor,
+        borderSide: borderSide ??
+            BorderSide(
+              width: 0,
+              color: Colors.transparent,
+            ),
+        disabledBorderColor: disabledBorderColor ?? Colors.transparent,
         splashColor: splashColor,
-        disabledColor: disabledColor,
         disabledTextColor: disabledTextColor,
         onPressed: onPressed,
       );
@@ -101,12 +119,19 @@ class JsButton extends StatelessWidget {
           .borderRadius;
     }
 
-    return FlatButton(
+    return OutlineButton(
       textColor: textColor ?? Colors.white,
       textTheme: getTextTheme(context),
-      focusColor: focusColor,
       splashColor: splashColor,
-      disabledColor: disabledColor,
+      highlightColor: highlightColor ?? Colors.transparent,
+      highlightedBorderColor: highlightedBorderColor ?? Colors.transparent,
+      focusColor: focusColor,
+      borderSide: borderSide ??
+          BorderSide(
+            width: 0,
+            color: Colors.transparent,
+          ),
+      disabledBorderColor: disabledBorderColor ?? Colors.transparent,
       disabledTextColor: disabledTextColor,
       onPressed: onPressed,
       padding: EdgeInsets.zero,

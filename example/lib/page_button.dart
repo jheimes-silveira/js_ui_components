@@ -30,7 +30,6 @@ class _PageButtonState extends State<PageButton> {
                 style: JsButtonStyle.contained,
                 text: "contained custom Color",
                 onPressed: () {},
-              
               ),
               SizedBox(height: 16),
               JsButton(
@@ -56,6 +55,9 @@ class _PageButtonState extends State<PageButton> {
               SizedBox(height: 16),
               JsButton(
                 style: JsButtonStyle.outlined,
+                textColor: Colors.red,
+                highlightedBorderColor: Colors.yellow,
+              
                 text: "outlined",
                 onPressed: () {},
               ),
@@ -111,6 +113,9 @@ class _PageButtonState extends State<PageButton> {
               ),
               SizedBox(height: 16),
               JsButton(
+                textColor: Colors.green,
+                color: Colors.red,
+                highlightColor: Colors.red,
                 style: JsButtonStyle.text,
                 text: "text",
                 enabled: false,
