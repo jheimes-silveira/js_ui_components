@@ -13,6 +13,7 @@ class JsButton extends StatelessWidget {
   final ButtonTextTheme textTheme;
   final Gradient gradient;
   final BorderSide borderSide;
+  final ShapeBorder shape;
   final Color textColor;
   final Color color;
   final Color focusColor;
@@ -46,6 +47,7 @@ class JsButton extends StatelessWidget {
     this.borderSide,
     this.hoverColor,
     this.disabledBorderColor,
+    this.shape,
   });
 
   @override
@@ -62,6 +64,7 @@ class JsButton extends StatelessWidget {
 
     if (style == JsButtonStyle.contained) {
       return RaisedButton(
+        shape: this.shape,
         child: child,
         textTheme: getTextTheme(context),
         textColor: textColor,
@@ -71,6 +74,7 @@ class JsButton extends StatelessWidget {
         disabledColor: disabledColor,
         disabledTextColor: disabledTextColor,
         onPressed: onPressed,
+        hoverColor: hoverColor,
       );
     }
 
@@ -78,6 +82,7 @@ class JsButton extends StatelessWidget {
       return OutlineButton(
         textTheme: getTextTheme(context),
         child: child,
+        shape: this.shape,
         textColor: textColor,
         color: color,
         focusColor: focusColor,
@@ -94,6 +99,7 @@ class JsButton extends StatelessWidget {
     if (style == JsButtonStyle.text) {
       return OutlineButton(
         child: child,
+        shape: this.shape,
         textTheme: getTextTheme(context),
         textColor: textColor,
         color: color,
@@ -113,8 +119,9 @@ class JsButton extends StatelessWidget {
     }
 
     BorderRadius border = BorderRadius.circular(0);
+    final shape = this.shape ?? Theme.of(context).buttonTheme.shape;
 
-    if (Theme.of(context).buttonTheme.shape is RoundedRectangleBorder) {
+    if (shape is RoundedRectangleBorder) {
       border = (Theme.of(context).buttonTheme.shape as RoundedRectangleBorder)
           .borderRadius;
     }

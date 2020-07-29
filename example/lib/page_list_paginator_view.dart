@@ -8,6 +8,7 @@ class PageListPaginatorView extends StatefulWidget {
 
 class _PageListPaginatorViewState extends State<PageListPaginatorView> {
   List models;
+  Paginator page;
   bool loading = false;
   int currentItem = 1;
 
@@ -25,11 +26,12 @@ class _PageListPaginatorViewState extends State<PageListPaginatorView> {
         title: Text("JsListPaginatorView"),
       ),
       body: JsListPaginatorView(
-        page: Paginator(),
+        page: page,
+        padding: EdgeInsets.only(bottom: 80),
         loading: loading,
         onRefresh: onRefresh,
         itemBuilder: (_, index) {
-          final model = models[index];
+          final model = page.data[index];
           return ListTile(
             leading: JsNetworkImage(
               imageUrl: model['image'],
@@ -60,7 +62,11 @@ class _PageListPaginatorViewState extends State<PageListPaginatorView> {
 
     Future.delayed(Duration(seconds: 2)).then((value) {
       setState(() {
-        models = map;
+        page = Paginator();
+        page.currentPage = 1;
+        page.data = map;
+
+        page.total = map.length;
         loading = false;
       });
     });
@@ -69,7 +75,7 @@ class _PageListPaginatorViewState extends State<PageListPaginatorView> {
   onRefresh() async {
     await Future.delayed(Duration(seconds: 1));
     setState(() {
-      models.insert(
+      page.data.insert(
         0,
         {
           "title": "Novo item $currentItem",
@@ -79,6 +85,7 @@ class _PageListPaginatorViewState extends State<PageListPaginatorView> {
         },
       );
       currentItem++;
+      page.total++;
     });
   }
 }

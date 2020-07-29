@@ -16,6 +16,7 @@ class JsListPaginatorView<T> extends StatelessWidget {
   final Function onHaveMorePage;
   final Paginator<T> page;
   final bool enablePullDown;
+  final bool reverse;
   final Function onRefresh;
 
   const JsListPaginatorView({
@@ -32,6 +33,7 @@ class JsListPaginatorView<T> extends StatelessWidget {
     this.onHaveMorePage,
     this.enablePullDown,
     this.onRefresh,
+    this.reverse = false,
   }) : super(key: key);
 
   @override
@@ -51,12 +53,14 @@ class JsListPaginatorView<T> extends StatelessWidget {
       loading: loading,
       loadingWidget: loadingWidget,
       models: page,
+      reverse: reverse,
+      padding: padding,
       itemCount: itemCount,
       enablePullDown: enablePullDown,
       onRefresh: onRefresh,
       itemBuilder: (_, index) {
         if (itemCount - 1 == index &&
-            (page.lastPage > page.currentPage) &&
+            (page.currentPage < page.total / page.perPage) &&
             onHaveMorePage != null) {
           onHaveMorePage();
 
@@ -83,7 +87,7 @@ class JsListPaginatorView<T> extends StatelessWidget {
       return 0;
     }
 
-    if (page.lastPage > page.currentPage) {
+    if (page.currentPage < page.total / page.perPage) {
       return page.data.length + 1;
     }
 

@@ -18,16 +18,14 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         buttonTheme: ButtonThemeData(
-        buttonColor: Colors.yellow,
+          buttonColor: Colors.yellow,
           height: 40,
           disabledColor: Colors.grey[300],
-           textTheme: ButtonTextTheme.primary,
+          textTheme: ButtonTextTheme.primary,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(8.0)),
           ),
-       
         ),
-        
         primarySwatch: Colors.blue,
         primaryColor: Colors.blue,
         accentColor: Colors.green,
@@ -115,6 +113,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   );
                 },
               ),
+              SizedBox(height: 16),
             ],
           ),
         ),

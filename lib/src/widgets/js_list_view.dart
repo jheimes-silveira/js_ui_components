@@ -16,6 +16,7 @@ class JsListView extends StatelessWidget {
   final dynamic models;
   final bool enablePullDown;
   final Function onRefresh;
+  final bool reverse;
 
   JsListView({
     Key key,
@@ -30,6 +31,7 @@ class JsListView extends StatelessWidget {
     this.loadingWidget,
     this.enablePullDown,
     this.onRefresh,
+    this.reverse = false,
   }) : super(key: key);
 
   @override
@@ -50,14 +52,15 @@ class JsListView extends StatelessWidget {
       onRefresh: () async {
         _refreshController.resetNoData();
         // monitor network fetch
-        if (onRefresh != null) {
-          await onRefresh();
+        if (this.onRefresh != null) {
+          await this.onRefresh();
         }
 
         _refreshController.refreshCompleted();
       },
       child: ListView.builder(
         physics: physics,
+        reverse: reverse,
         shrinkWrap: shrinkWrap,
         padding: padding,
         itemCount: itemCount,
@@ -83,7 +86,7 @@ class JsListView extends StatelessWidget {
       return enablePullDown;
     }
 
-    if (onRefresh != null) {
+    if (this.onRefresh != null) {
       return true;
     }
 
