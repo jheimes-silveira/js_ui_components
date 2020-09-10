@@ -15,6 +15,8 @@ class JsTextField extends StatelessWidget {
   final int maxLines;
   final int minLines;
   final int maxLength;
+  final Widget suffixIconWidget;
+  final Widget prefixIconWidget;
   final IconData prefixIcon;
   final IconData suffixIcon;
   final Function prefixIconOnPressed;
@@ -55,6 +57,8 @@ class JsTextField extends StatelessWidget {
     this.inputFormatters,
     this.margin,
     this.decoration,
+    this.suffixIconWidget,
+    this.prefixIconWidget,
   }) : super(key: key);
 
   @override
@@ -92,8 +96,8 @@ class JsTextField extends StatelessWidget {
                   counterText: counterText,
                   floatingLabelBehavior: FloatingLabelBehavior.always,
                   helperText: helperText,
-                  suffixIcon: _buildSuffixIcon(context),
-                  prefixIcon: _buildPrefixIcon(context),
+                  suffixIcon: suffixIconWidget ?? _buildSuffixIcon(context),
+                  prefixIcon: prefixIconWidget ?? _buildPrefixIcon(context),
                   border: OutlineInputBorder(),
                   errorMaxLines: 3,
                   helperMaxLines: 3,

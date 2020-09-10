@@ -56,10 +56,13 @@ class JsButton extends StatelessWidget {
     Function onPressed = enabled && !loading ? this.onPressed : null;
 
     if (loading) {
-      child = widgetLoading ??
-          JsProgress(
-            valueColor: colorLoading ?? Theme.of(context).indicatorColor,
-          );
+      child = SizedBox(
+        height: Theme.of(context).buttonTheme.height,
+        child: widgetLoading ??
+            JsProgress(
+              valueColor: colorLoading ?? Theme.of(context).indicatorColor,
+            ),
+      );
     }
 
     if (style == JsButtonStyle.contained) {

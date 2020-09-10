@@ -13,6 +13,8 @@ class JsNetworkImage extends StatelessWidget {
   final Widget errorWidget;
   final BoxDecoration decoration;
   final BorderRadius borderRadius;
+  final BoxFit boxfit;
+  final BoxFit decorationBoxfit;
 
   const JsNetworkImage({
     this.height = 40,
@@ -24,6 +26,8 @@ class JsNetworkImage extends StatelessWidget {
     this.cacheManager,
     this.decoration,
     this.borderRadius,
+    this.boxfit = BoxFit.fill,
+    this.decorationBoxfit = BoxFit.cover,
   });
 
   @override
@@ -34,7 +38,7 @@ class JsNetworkImage extends StatelessWidget {
       height: height,
       cacheManager: cacheManager,
       fadeInCurve: Curves.fastOutSlowIn,
-      fit: BoxFit.fill,
+      fit: boxfit,
       imageBuilder: (context, imageProvider) => Container(
         height: height,
         width: width,

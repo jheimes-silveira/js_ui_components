@@ -17,6 +17,8 @@ class JsTextFieldPassword extends StatefulWidget {
   final String titleText;
   final FocusNode focusNode;
   final InputDecoration decoration;
+  final Widget suffixIconWidget;
+  final Widget prefixIconWidget;
 
   const JsTextFieldPassword({
     Key key,
@@ -35,6 +37,8 @@ class JsTextFieldPassword extends StatefulWidget {
     this.textInputAction,
     this.focusNode,
     this.decoration,
+    this.suffixIconWidget,
+    this.prefixIconWidget,
   }) : super(key: key);
 
   @override
@@ -55,6 +59,8 @@ class _JsTextFieldPasswordState extends State<JsTextFieldPassword> {
       titleText: widget.titleText,
       autofocus: widget.autofocus,
       errorText: widget.errorText,
+      suffixIconWidget: widget.suffixIconWidget,
+      prefixIconWidget: widget.prefixIconWidget,
       helperText: widget.helperText,
       enabled: widget.enabled,
       counterText: widget.counterText,
