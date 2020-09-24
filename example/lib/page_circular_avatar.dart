@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:js_ui_components/js_ui_components.dart';
+import 'package:octo_image/octo_image.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class PageCircularAvatar extends StatefulWidget {
   @override
@@ -54,7 +56,7 @@ class _PageCircularAvatarState extends State<PageCircularAvatar> {
             title: Text("titulo 1"),
             subtitle: Text("titulo 1"),
           ),
-          Divider(),
+       
         ],
       ),
     );

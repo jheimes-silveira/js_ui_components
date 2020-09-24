@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+import 'package:octo_image/octo_image.dart';
 import 'package:shimmer/shimmer.dart';
 
 class JsNetworkImage extends StatelessWidget {
-  final BaseCacheManager cacheManager;
   final String imageUrl;
   final double height;
   final double width;
@@ -23,7 +23,6 @@ class JsNetworkImage extends StatelessWidget {
     this.color,
     this.errorWidget,
     this.circular = true,
-    this.cacheManager,
     this.decoration,
     this.borderRadius,
     this.boxfit = BoxFit.fill,
@@ -32,34 +31,35 @@ class JsNetworkImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CachedNetworkImage(
-      imageUrl: "$imageUrl",
-      width: width,
+    return OctoImage(
+      image: CachedNetworkImageProvider(
+        "$imageUrl",
+      ),
       height: height,
-      cacheManager: cacheManager,
-      fadeInCurve: Curves.fastOutSlowIn,
+      width: width,
       fit: boxfit,
-      imageBuilder: (context, imageProvider) => Container(
-        height: height,
-        width: width,
-        decoration: _buildDecoration(context).copyWith(
-          image: DecorationImage(
-            image: imageProvider,
-            fit: BoxFit.cover,
+      imageBuilder: circular ? OctoImageTransformer.circleAvatar() : null,
+      placeholderBuilder: (context) {
+        if (kIsWeb) {
+          return CircularProgressIndicator(
+            strokeWidth: 2,
+            valueColor: AlwaysStoppedAnimation<Color>(
+              Color(0xFFCCCCCC),
+            ),
+          );
+        }
+
+        return Shimmer.fromColors(
+          baseColor: Colors.grey[300],
+          highlightColor: Colors.grey[100],
+          child: Container(
+            height: height,
+            width: width,
+            decoration: _buildDecoration(context),
           ),
-        ),
-      ),
-      progressIndicatorBuilder: (context, url, downloadProgress) =>
-          Shimmer.fromColors(
-        baseColor: Colors.grey[300],
-        highlightColor: Colors.grey[100],
-        child: Container(
-          height: height,
-          width: width,
-          decoration: _buildDecoration(context),
-        ),
-      ),
-      errorWidget: (context, url, error) => Container(
+        );
+      },
+      errorBuilder: (context, url, error) => Container(
         height: height,
         width: width,
         decoration: _buildDecoration(context),
@@ -72,7 +72,7 @@ class JsNetworkImage extends StatelessWidget {
     return BoxDecoration(
       shape: _getShaper(),
       borderRadius: _getBorderRadius(),
-      color: color ?? Theme.of(context).disabledColor,
+      color: color ?? Color(0xFFCCCCCC),
     );
   }
 

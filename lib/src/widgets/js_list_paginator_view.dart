@@ -40,7 +40,7 @@ class JsListPaginatorView<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     int itemCount = _getItemCount();
 
-    if (loading != null && loading) {
+    if (loading != null && loading && page == null) {
       return loadingWidget ?? Center(child: JsProgress());
     }
 
@@ -82,8 +82,7 @@ class JsListPaginatorView<T> extends StatelessWidget {
       return itemCount;
     }
 
-    // ignore: null_aware_in_condition
-    if (page?.data?.isEmpty) {
+    if (page?.data?.isEmpty == null) {
       return 0;
     }
 
