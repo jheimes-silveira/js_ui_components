@@ -91,6 +91,7 @@ class JsButton extends StatelessWidget {
         focusColor: focusColor,
         splashColor: splashColor,
         hoverColor: hoverColor,
+        borderSide: borderSide,
         highlightedBorderColor: highlightedBorderColor,
         disabledBorderColor: disabledBorderColor,
         disabledTextColor: disabledTextColor,

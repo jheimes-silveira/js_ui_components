@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:js_ui_components/js_ui_components.dart';
-import 'package:octo_image/octo_image.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 
 class PageCircularAvatar extends StatefulWidget {
   @override
@@ -34,6 +32,24 @@ class _PageCircularAvatarState extends State<PageCircularAvatar> {
                   imageUrl:
                       "https://s3.amazonaws.com/igui-ecologia/wp-contet/uploads/2018/04/not-2-2604-1.jpg",
                 ),
+                JsNetworkImage(
+                  height: 50,
+                  width: 50,
+                  imageUrl:
+                      "https://s3.amazonaws.com/igui-ecologia/wp-contet/uploads/2018/04/not-2-2604-1.jpg",
+                  errorWidget: JsBorder(
+                    color: Colors.amberAccent,
+                    child: Icon(Icons.ac_unit_sharp),
+                  ),
+                ),
+                JsNetworkImage(
+                  height: 50,
+                  width: 50,
+                  errorWidget: JsBorder(
+                    color: Colors.amberAccent,
+                    child: Icon(Icons.ac_unit_sharp),
+                  ),
+                ),
               ],
             ),
           ),
@@ -56,7 +72,6 @@ class _PageCircularAvatarState extends State<PageCircularAvatar> {
             title: Text("titulo 1"),
             subtitle: Text("titulo 1"),
           ),
-       
         ],
       ),
     );

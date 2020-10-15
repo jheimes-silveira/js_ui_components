@@ -11,4 +11,5 @@ export 'package:js_ui_components/src/widgets/js_message.dart';
 export 'package:js_ui_components/src/widgets/js_progress.dart';
 export 'package:js_ui_components/src/widgets/js_text_field.dart';
 export 'package:js_ui_components/src/widgets/js_text_field_password.dart';
+export 'package:js_ui_components/src/widgets/js_border.dart';
 export 'package:js_ui_components/src/model/paginator.dart';

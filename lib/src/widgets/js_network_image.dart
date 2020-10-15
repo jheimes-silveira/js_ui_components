@@ -31,6 +31,9 @@ class JsNetworkImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (imageUrl == null && errorWidget != null) {
+      return errorWidget;
+    }
     return OctoImage(
       image: CachedNetworkImageProvider(
         "$imageUrl",
@@ -62,7 +65,7 @@ class JsNetworkImage extends StatelessWidget {
       errorBuilder: (context, url, error) => Container(
         height: height,
         width: width,
-        decoration: _buildDecoration(context),
+        decoration: errorWidget != null ? null : _buildDecoration(context),
         child: errorWidget,
       ),
     );
