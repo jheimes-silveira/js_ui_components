@@ -12,4 +12,6 @@ export 'package:js_ui_components/src/widgets/js_progress.dart';
 export 'package:js_ui_components/src/widgets/js_text_field.dart';
 export 'package:js_ui_components/src/widgets/js_text_field_password.dart';
 export 'package:js_ui_components/src/widgets/js_border.dart';
+export 'package:js_ui_components/src/widgets/js_card_chips_choice.dart';
+export 'package:js_ui_components/src/widgets/js_app_bar_action_progress.dart';
 export 'package:js_ui_components/src/model/paginator.dart';

@@ -74,24 +74,28 @@ class Paginator<T> {
   }
 
   String request() {
-    String request = '?per_page=$perPage';
+    String params = "";
+    
+    if (perPage != null) {
+      params += "${params.isEmpty ? '?' : '&'}per_page=$perPage";
+    }
 
     if (currentPage != null) {
-      request += "&page=${currentPage + 1}";
+      params += "${params.isEmpty ? '?' : '&'}page=$currentPage";
     }
 
     if (sort != null) {
-      request += "&sort=$sort";
+      params += "${params.isEmpty ? '?' : '&'}sort=$sort";
     }
 
     if (asc != null) {
-      request += "&asc=$asc";
+      params += "${params.isEmpty ? '?' : '&'}asc=$asc";
     }
 
     if (term != null) {
-      request += "&term=$term";
+      params += "${params.isEmpty ? '?' : '&'}term=$term";
     }
 
-    return request;
+    return params;
   }
 }

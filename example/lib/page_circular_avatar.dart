@@ -39,7 +39,7 @@ class _PageCircularAvatarState extends State<PageCircularAvatar> {
                       "https://s3.amazonaws.com/igui-ecologia/wp-contet/uploads/2018/04/not-2-2604-1.jpg",
                   errorWidget: JsBorder(
                     color: Colors.amberAccent,
-                    child: Icon(Icons.ac_unit_sharp),
+                    child: Icon(Icons.ac_unit),
                   ),
                 ),
                 JsNetworkImage(
@@ -47,7 +47,7 @@ class _PageCircularAvatarState extends State<PageCircularAvatar> {
                   width: 50,
                   errorWidget: JsBorder(
                     color: Colors.amberAccent,
-                    child: Icon(Icons.ac_unit_sharp),
+                    child: Icon(Icons.ac_unit),
                   ),
                 ),
               ],

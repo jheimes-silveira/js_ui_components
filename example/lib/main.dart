@@ -1,4 +1,5 @@
 import 'package:example/page_button.dart';
+import 'package:example/page_empty_state.dart';
 import 'package:example/page_list_paginator_view.dart';
 import 'package:example/page_list_view.dart';
 import 'package:example/page_text_field.dart';
@@ -110,6 +111,18 @@ class _MyHomePageState extends State<MyHomePage> {
                     context,
                     MaterialPageRoute(
                         builder: (context) => PageListPaginatorView()),
+                  );
+                },
+              ),
+              SizedBox(height: 16),
+              JsButton(
+                style: JsButtonStyle.contained,
+                text: "EmptyState",
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => PageEmptyState()),
                   );
                 },
               ),

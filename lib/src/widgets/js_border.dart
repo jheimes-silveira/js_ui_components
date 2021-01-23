@@ -34,8 +34,8 @@ class JsBorder extends StatelessWidget {
         alignment: Alignment.center,
         children: [
           Container(
-            height: height - distanceBorder ?? 6,
-            width: width - distanceBorder ?? 6,
+            height: height - (distanceBorder ?? 6),
+            width: width - (distanceBorder ?? 6),
             decoration: BoxDecoration(
               shape: circle ? BoxShape.circle : BoxShape.rectangle,
               borderRadius: borderRadius,
