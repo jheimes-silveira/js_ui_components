@@ -17,7 +17,7 @@ class JsProgress extends StatelessWidget {
     }
     return SpinKitThreeBounce(
       color: valueColor ?? Theme.of(context).primaryColor,
-      size: 30.0,
+      size: 20.0,
     );
   }
 }

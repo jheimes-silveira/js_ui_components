@@ -27,6 +27,12 @@ class _PageListPaginatorViewState extends State<PageListPaginatorView> {
       ),
       body: JsListPaginatorView(
         page: page,
+        headerWidget: Container(
+          alignment: Alignment.center,
+          child: Text("Header"),
+          color: Colors.red,
+          height: 200,
+        ),
         padding: EdgeInsets.only(bottom: 80),
         loading: loading,
         onRefresh: onRefresh,

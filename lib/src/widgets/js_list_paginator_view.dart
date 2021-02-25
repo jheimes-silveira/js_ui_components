@@ -8,6 +8,7 @@ class JsListPaginatorView<T> extends StatelessWidget {
   final int itemCount;
   final Widget emptyState;
   final Widget loadingWidget;
+  final Widget headerWidget;
   final bool loading;
   final bool shrinkWrap;
   final EdgeInsetsGeometry padding;
@@ -34,6 +35,7 @@ class JsListPaginatorView<T> extends StatelessWidget {
     this.enablePullDown,
     this.onRefresh,
     this.reverse = false,
+    this.headerWidget,
   }) : super(key: key);
 
   @override
@@ -72,25 +74,34 @@ class JsListPaginatorView<T> extends StatelessWidget {
             child: JsProgress(),
           );
         }
+        if (headerWidget != null && index == 0) {
+          return headerWidget;
+        }
 
-        return itemBuilder(_, index);
+        return itemBuilder(_, index -(headerWidget == null ? 0 : 1));
       },
     );
   }
 
   int _getItemCount() {
+    int countWithHeaderWidget = 0;
+
     if (itemCount != null) {
       return itemCount;
     }
 
+    if (headerWidget != null) {
+      countWithHeaderWidget = 1;
+    }
+
     if (page?.data?.isEmpty == null) {
-      return 0;
+      return 0 + countWithHeaderWidget;
     }
 
     if (page.currentPage < page.total / page.perPage) {
-      return page.data.length + 1;
+      return page.data.length + 1 + countWithHeaderWidget;
     }
 
-    return page.data.length;
+    return page.data.length + countWithHeaderWidget;
   }
 }

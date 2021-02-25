@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:octo_image/octo_image.dart';
-import 'package:shimmer/shimmer.dart';
 
 class JsNetworkImage extends StatelessWidget {
   final String imageUrl;
@@ -15,7 +15,8 @@ class JsNetworkImage extends StatelessWidget {
   final BorderRadius borderRadius;
   final BoxFit boxfit;
   final BoxFit decorationBoxfit;
-
+  final OctoPlaceholderBuilder placeholderBuilder;
+  final OctoErrorBuilder errorBuilder;
   const JsNetworkImage({
     this.height = 40,
     this.imageUrl,
@@ -25,8 +26,10 @@ class JsNetworkImage extends StatelessWidget {
     this.circular = true,
     this.decoration,
     this.borderRadius,
-    this.boxfit = BoxFit.fill,
+    this.boxfit = BoxFit.cover,
     this.decorationBoxfit = BoxFit.cover,
+    this.placeholderBuilder,
+    this.errorBuilder,
   });
 
   @override
@@ -41,33 +44,36 @@ class JsNetworkImage extends StatelessWidget {
       height: height,
       width: width,
       fit: boxfit,
+      fadeInDuration: Duration(milliseconds: 500),
+      fadeOutDuration: Duration(milliseconds: 1000),
+      placeholderFadeInDuration:Duration(milliseconds: 1000),
+      
       imageBuilder: circular ? OctoImageTransformer.circleAvatar() : null,
-      placeholderBuilder: (context) {
-        if (kIsWeb) {
-          return CircularProgressIndicator(
-            strokeWidth: 2,
-            valueColor: AlwaysStoppedAnimation<Color>(
-              Color(0xFFCCCCCC),
-            ),
-          );
-        }
+      placeholderBuilder: placeholderBuilder ??
+          (context) {
+            if (kIsWeb) {
+              return CircularProgressIndicator(
+                strokeWidth: 2,
+                valueColor: AlwaysStoppedAnimation<Color>(
+                  Color(0xFFCCCCCC),
+                ),
+              );
+            }
 
-        return Shimmer.fromColors(
-          baseColor: Colors.grey[300],
-          highlightColor: Colors.grey[100],
-          child: Container(
-            height: height,
-            width: width,
-            decoration: _buildDecoration(context),
-          ),
-        );
-      },
-      errorBuilder: (context, url, error) => Container(
-        height: height,
-        width: width,
-        decoration: errorWidget != null ? null : _buildDecoration(context),
-        child: errorWidget,
-      ),
+            return SpinKitCircle(
+              duration: Duration(milliseconds: 800),
+              color: Theme.of(context).disabledColor,
+              size: 30,
+            );
+          },
+      errorBuilder: errorBuilder ??
+          (context, url, error) => Container(
+                height: height,
+                width: width,
+                decoration:
+                    errorWidget != null ? null : _buildDecoration(context),
+                child: errorWidget,
+              ),
     );
   }
 
