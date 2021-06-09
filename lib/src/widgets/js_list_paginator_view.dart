@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:js_ui_components/js_ui_components.dart';
 import 'package:js_ui_components/src/model/paginator.dart';
 
 import 'js_list_view.dart';

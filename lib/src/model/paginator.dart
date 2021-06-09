@@ -35,7 +35,7 @@ class Paginator<T> {
     this.term,
   }) {
     if (data == null) {
-      data = List<T>();
+      data = <T>[];
     }
   }
 

@@ -18,13 +18,25 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
+        outlinedButtonTheme: OutlinedButtonThemeData(
+          style: OutlinedButton.styleFrom(primary: Colors.purple),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            primary: Colors.red,
+            elevation: 3,
+            textStyle: TextStyle(
+              color: Colors.red,
+            ),
+          ),
+        ),
         buttonTheme: ButtonThemeData(
           buttonColor: Colors.yellow,
           height: 40,
-          disabledColor: Colors.grey[300],
+          disabledColor: Colors.black,
           textTheme: ButtonTextTheme.primary,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(8.0)),
+            borderRadius: BorderRadius.all(Radius.circular(16.0)),
           ),
         ),
         primarySwatch: Colors.blue,
@@ -59,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               JsButton(
-                style: JsButtonStyle.contained,
+                type: JsButtonType.elevated,
                 text: "Buttons",
                 onPressed: () {
                   Navigator.push(
@@ -67,10 +79,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     MaterialPageRoute(builder: (context) => PageButton()),
                   );
                 },
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.red,
+                ),
               ),
               SizedBox(height: 16),
               JsButton(
-                style: JsButtonStyle.contained,
+                type: JsButtonType.elevated,
                 text: "TextField",
                 onPressed: () {
                   Navigator.push(
@@ -81,7 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               SizedBox(height: 16),
               JsButton(
-                style: JsButtonStyle.contained,
+                type: JsButtonType.elevated,
                 text: "Circular avatar",
                 onPressed: () {
                   Navigator.push(
@@ -93,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               SizedBox(height: 16),
               JsButton(
-                style: JsButtonStyle.contained,
+                type: JsButtonType.elevated,
                 text: "Listview",
                 onPressed: () {
                   Navigator.push(
@@ -104,7 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               SizedBox(height: 16),
               JsButton(
-                style: JsButtonStyle.contained,
+                type: JsButtonType.elevated,
                 text: "ListPaginatorview",
                 onPressed: () {
                   Navigator.push(
@@ -116,13 +131,12 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               SizedBox(height: 16),
               JsButton(
-                style: JsButtonStyle.contained,
+                type: JsButtonType.elevated,
                 text: "EmptyState",
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                        builder: (context) => PageEmptyState()),
+                    MaterialPageRoute(builder: (context) => PageEmptyState()),
                   );
                 },
               ),
@@ -141,17 +155,16 @@ class _MyHomePageState extends State<MyHomePage> {
       padding: const EdgeInsets.symmetric(
         horizontal: 16,
       ),
-      child: JsButton(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
+      child: Column(
+        children: [
+          JsButton(
+            child: Text(
               "Proximo",
             ),
-          ],
-        ),
-        loading: true,
-        onPressed: () {},
+            loading: false,
+            onPressed: () {},
+          ),
+        ],
       ),
     );
   }

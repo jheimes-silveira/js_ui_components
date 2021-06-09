@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:js_ui_components/js_ui_components.dart';
 
 class PageButton extends StatefulWidget {
@@ -22,25 +23,32 @@ class _PageButtonState extends State<PageButton> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               JsButton(
-                style: JsButtonStyle.contained,
-                text: "contained",
+                type: JsButtonType.elevated,
+                text: "elevated",
                 onPressed: () {},
+                enabled: false,
+                loading: true,
+                style: ElevatedButton.styleFrom(
+                 
+                  primary: Colors.red,
+
+                ),
               ),
               JsButton(
-                style: JsButtonStyle.contained,
-                text: "contained custom Color",
+                type: JsButtonType.elevated,
+                child: Text("contained custom Color"),
                 onPressed: () {},
               ),
               SizedBox(height: 16),
               JsButton(
-                style: JsButtonStyle.contained,
+                type: JsButtonType.elevated,
                 text: "contained disable",
                 enabled: false,
                 onPressed: () {},
               ),
               SizedBox(height: 16),
               JsButton(
-                style: JsButtonStyle.contained,
+                type: JsButtonType.elevated,
                 loading: true,
                 text: "contained disable",
                 enabled: false,
@@ -48,81 +56,65 @@ class _PageButtonState extends State<PageButton> {
               ),
               SizedBox(height: 16),
               JsButton(
-                style: JsButtonStyle.contained,
+                type: JsButtonType.elevated,
                 text: "contained MAX",
                 onPressed: () {},
               ),
               SizedBox(height: 16),
               JsButton(
-                style: JsButtonStyle.outlined,
-                textColor: Colors.red,
-                highlightedBorderColor: Colors.yellow,
-              
+                type: JsButtonType.elevated,
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.yellow,
+                  elevation: 1,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(38.0)),
+                  ),
+                ),
                 text: "outlined",
                 onPressed: () {},
               ),
               SizedBox(height: 16),
               JsButton(
-                style: JsButtonStyle.outlined,
+                type: JsButtonType.outlined,
                 text: "outlined disable",
                 enabled: false,
                 onPressed: () {},
-              ),
-              SizedBox(height: 16),
-              JsButton(
-                style: JsButtonStyle.outlined,
-                text: "outlined disable",
-                enabled: false,
-                loading: true,
-                onPressed: () {},
-              ),
-              SizedBox(height: 16),
-              JsButton(
-                style: JsButtonStyle.outlined,
-                text: "outlined disable",
-                onPressed: () {},
-              ),
-              SizedBox(height: 16),
-              JsButton(
-                style: JsButtonStyle.gradient,
-                child: Center(child: Text("gradient")),
-                onPressed: () {},
-              ),
-              SizedBox(height: 16),
-              JsButton(
-                style: JsButtonStyle.gradient,
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text("gradient"),
-                  ],
+                style: OutlinedButton.styleFrom(
+                  primary: Colors.yellow,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(38.0)),
+                  ),
                 ),
-                enabled: false,
               ),
               SizedBox(height: 16),
               JsButton(
-                style: JsButtonStyle.gradient,
-                text: "gradient disable",
+                type: JsButtonType.outlined,
+                text: "outlined disable",
+                enabled: false,
                 loading: true,
+                onPressed: () {},
               ),
               SizedBox(height: 16),
               JsButton(
-                style: JsButtonStyle.text,
+                type: JsButtonType.outlined,
+                text: "outlined disable",
+                onPressed: () {},
+              ),
+              SizedBox(height: 16),
+              JsButton(
+                type: JsButtonType.text,
                 text: "text",
                 onPressed: () {},
               ),
               SizedBox(height: 16),
               JsButton(
-                textColor: Colors.green,
-                color: Colors.red,
-                highlightColor: Colors.red,
-                style: JsButtonStyle.text,
+                type: JsButtonType.text,
                 text: "text",
                 enabled: false,
                 onPressed: () {},
               ),
               JsButton(
-                style: JsButtonStyle.text,
+                type: JsButtonType.text,
                 loading: true,
                 text: "text",
                 onPressed: () {},
