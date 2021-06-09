@@ -56,7 +56,7 @@ class JsButtonOutlined extends StatelessWidget {
     if (text != null)
       return Container(
         alignment: Alignment.center,
-        child: JsText(text),
+        child: Text(text),
       );
 
     return null;

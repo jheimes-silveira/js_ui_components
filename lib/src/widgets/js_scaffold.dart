@@ -5,6 +5,8 @@ import '../../js_ui_components.dart';
 class JsScaffold extends StatelessWidget {
   final AppBar appBar;
   final Widget body;
+  final Widget widgetLoading;
+  final Widget widgetEmptyState;
   final bool loading;
   final String emptyState;
   final String error;
@@ -16,6 +18,8 @@ class JsScaffold extends StatelessWidget {
     this.loading,
     this.emptyState,
     this.error,
+    this.widgetLoading,
+    this.widgetEmptyState,
   }) : super(key: key);
 
   @override

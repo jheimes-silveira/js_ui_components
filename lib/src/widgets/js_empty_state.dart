@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../js_ui_components.dart';
-
 class JsEmptyState extends StatelessWidget {
   final String title;
   final String subtitle;
@@ -54,15 +52,16 @@ class JsEmptyState extends StatelessWidget {
       padding: EdgeInsets.only(
         bottom: 32,
       ),
-      child: JsText.headline6(
+      child: Text(
         title,
         textAlign: TextAlign.center,
+        style: Theme.of(context).textTheme.headline6,
       ),
     );
   }
 
   Widget _buildSubtitle(BuildContext context) {
-    return JsText(
+    return Text(
       subtitle,
       style: Theme.of(context).textTheme.subtitle1,
       textAlign: TextAlign.center,
