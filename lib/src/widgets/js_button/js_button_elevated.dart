@@ -3,20 +3,18 @@ import 'package:flutter/material.dart';
 import '../../../js_ui_components.dart';
 
 class JsButtonElevated extends StatelessWidget {
-  final ButtonStyle style;
+  final ButtonStyle? style;
 
-  final Widget child;
-  final String text;
-  final Function onPressed;
-  final Function onLongPress;
-  final EdgeInsets padding;
+  final Widget? child;
+  final String? text;
+  final Function? onPressed;
+  final Function? onLongPress;
   final bool enabled;
-  final bool loading;
+  final bool? loading;
 
   JsButtonElevated({
     this.child,
     this.onPressed,
-    this.padding,
     this.text,
     this.enabled = true,
     this.loading,
@@ -26,7 +24,7 @@ class JsButtonElevated extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Function onPressed =
+    Function? onPressed =
         (enabled == null || enabled == false || loading == true)
             ? null
             : this.onPressed;
@@ -41,7 +39,7 @@ class JsButtonElevated extends StatelessWidget {
     if (onPressed == null) {
       onPressed = () {};
       opacity = 0.5;
-      style = style.copyWith(
+      style = style?.copyWith(
         splashFactory: NoSplash.splashFactory,
       );
     }
@@ -51,13 +49,15 @@ class JsButtonElevated extends StatelessWidget {
         Opacity(
           opacity: opacity,
           child: ElevatedButton(
-            onPressed: onPressed,
-            onLongPress: onLongPress,
+            
+            onPressed: onPressed as void Function()?,
+            onLongPress: onLongPress as void Function()?,
             child: _getChild(context),
+            
             style: style,
           ),
         ),
-        if (loading != null && loading)
+        if (loading != null && loading!)
           Positioned.fill(
             child: Container(
               alignment: Alignment.center,
@@ -72,8 +72,8 @@ class JsButtonElevated extends StatelessWidget {
     );
   }
 
-  Widget _getChild(BuildContext context) {
-    if (loading != null && loading)
+  Widget? _getChild(BuildContext context) {
+    if (loading != null && loading!)
       return Container(
         alignment: Alignment.center,
       );
@@ -83,7 +83,7 @@ class JsButtonElevated extends StatelessWidget {
     if (text != null)
       return Container(
         alignment: Alignment.center,
-        child: Text(text),
+        child: Text(text!),
       );
 
     return null;

@@ -2,26 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:js_ui_components/src/widgets/js_text_field.dart';
 
 class JsTextFieldPassword extends StatefulWidget {
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final TextInputType keyboardType;
-  final String labelText;
+  final String? labelText;
   final bool autofocus;
-  final String errorText;
-  final String helperText;
-  final bool enabled;
-  final String counterText;
-  final String auxiliaryText;
-  final Function(String value) onChanged;
-  final ValueChanged<String> onSubmitted;
-  final TextInputAction textInputAction;
-  final String titleText;
-  final FocusNode focusNode;
-  final InputDecoration decoration;
-  final Widget suffixIconWidget;
-  final Widget prefixIconWidget;
+  final String? errorText;
+  final String? helperText;
+  final bool? enabled;
+  final String? counterText;
+  final String? auxiliaryText;
+  final Function(String value)? onChanged;
+  final ValueChanged<String>? onSubmitted;
+  final TextInputAction? textInputAction;
+  final String? titleText;
+  final FocusNode? focusNode;
+  final InputDecoration? decoration;
+  final Widget? suffixIconWidget;
+  final Widget? prefixIconWidget;
 
   const JsTextFieldPassword({
-    Key key,
+    Key? key,
     this.controller,
     this.titleText,
     this.keyboardType = TextInputType.text,

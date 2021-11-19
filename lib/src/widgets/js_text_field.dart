@@ -2,36 +2,36 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class JsTextField extends StatelessWidget {
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final bool obscureText;
   final TextInputType keyboardType;
-  final String labelText;
+  final String? labelText;
   final bool autofocus;
-  final String errorText;
-  final String titleText;
-  final String helperText;
-  final String counterText;
-  final String auxiliaryText;
+  final String? errorText;
+  final String? titleText;
+  final String? helperText;
+  final String? counterText;
+  final String? auxiliaryText;
   final int maxLines;
   final int minLines;
-  final int maxLength;
-  final Widget suffixIconWidget;
-  final Widget prefixIconWidget;
-  final IconData prefixIcon;
-  final IconData suffixIcon;
-  final Function prefixIconOnPressed;
-  final Function suffixIconOnPressed;
-  final bool enabled;
-  final ValueChanged<String> onSubmitted;
-  final TextInputAction textInputAction;
-  final Function(String value) onChanged;
-  final FocusNode focusNode;
-  final EdgeInsets margin;
-  final List<TextInputFormatter> inputFormatters;
-  final InputDecoration decoration;
+  final int? maxLength;
+  final Widget? suffixIconWidget;
+  final Widget? prefixIconWidget;
+  final IconData? prefixIcon;
+  final IconData? suffixIcon;
+  final Function? prefixIconOnPressed;
+  final Function? suffixIconOnPressed;
+  final bool? enabled;
+  final ValueChanged<String>? onSubmitted;
+  final TextInputAction? textInputAction;
+  final Function(String value)? onChanged;
+  final FocusNode? focusNode;
+  final EdgeInsets? margin;
+  final List<TextInputFormatter>? inputFormatters;
+  final InputDecoration? decoration;
 
   const JsTextField({
-    Key key,
+    Key? key,
     this.controller,
     this.obscureText = false,
     this.keyboardType = TextInputType.text,
@@ -109,24 +109,24 @@ class JsTextField extends StatelessWidget {
     );
   }
 
-  GestureDetector _buildPrefixIcon(BuildContext context) {
+  GestureDetector? _buildPrefixIcon(BuildContext context) {
     if (prefixIcon == null) return null;
 
     return GestureDetector(
       child: Icon(prefixIcon,
           color: errorText == null ? null : Theme.of(context).errorColor),
-      onTap: prefixIconOnPressed,
+      onTap: prefixIconOnPressed as void Function()?,
     );
   }
 
-  GestureDetector _buildSuffixIcon(BuildContext context) {
+  GestureDetector? _buildSuffixIcon(BuildContext context) {
     if (suffixIcon == null) {
       return null;
     }
     return GestureDetector(
       child: Icon(suffixIcon,
           color: errorText == null ? null : Theme.of(context).errorColor),
-      onTap: suffixIconOnPressed,
+      onTap: suffixIconOnPressed as void Function()?,
     );
   }
 
@@ -136,7 +136,7 @@ class JsTextField extends StatelessWidget {
     }
 
     return Text(
-      titleText,
+      titleText!,
       style: Theme.of(context).textTheme.bodyText1,
     );
   }

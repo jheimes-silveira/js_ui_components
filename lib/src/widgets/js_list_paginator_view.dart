@@ -6,24 +6,24 @@ import 'js_list_view.dart';
 import 'js_progress.dart';
 
 class JsListPaginatorView<T> extends StatelessWidget {
-  final int itemCount;
-  final Widget emptyState;
-  final Widget loadingWidget;
-  final Widget headerWidget;
-  final bool loading;
+  final int? itemCount;
+  final Widget? emptyState;
+  final Widget? loadingWidget;
+  final Widget? headerWidget;
+  final bool? loading;
   final bool shrinkWrap;
-  final EdgeInsetsGeometry padding;
-  final ScrollPhysics physics;
+  final EdgeInsetsGeometry? padding;
+  final ScrollPhysics? physics;
   final IndexedWidgetBuilder itemBuilder;
-  final Function onHaveMorePage;
-  final Paginator<T> page;
-  final bool enablePullDown;
+  final Function? onHaveMorePage;
+  final Paginator<T>? page;
+  final bool? enablePullDown;
   final bool reverse;
-  final Function onRefresh;
+  final Function? onRefresh;
 
   const JsListPaginatorView({
-    Key key,
-    @required this.itemBuilder,
+    Key? key,
+    required this.itemBuilder,
     this.emptyState,
     this.itemCount,
     this.loading,
@@ -41,15 +41,15 @@ class JsListPaginatorView<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int itemCount = _getItemCount();
+    int? itemCount = _getItemCount();
 
-    if (loading != null && loading) {
+    if (loading != null && loading!) {
       return loadingWidget ?? Center(child: JsProgress());
     }
 
     if ((itemCount == null || itemCount == 0 || page == null) &&
         emptyState != null) {
-      return emptyState;
+      return emptyState!;
     }
 
     return JsListView(
@@ -63,10 +63,10 @@ class JsListPaginatorView<T> extends StatelessWidget {
       enablePullDown: enablePullDown,
       onRefresh: onRefresh,
       itemBuilder: (_, index) {
-        if (itemCount - 1 == index &&
-            (page.currentPage < page.total / page.perPage) &&
+        if (itemCount! - 1 == index &&
+            (page!.currentPage! < page!.total! / page!.perPage!) &&
             onHaveMorePage != null) {
-          onHaveMorePage();
+          onHaveMorePage!();
 
           return Padding(
             padding: const EdgeInsets.all(
@@ -76,7 +76,7 @@ class JsListPaginatorView<T> extends StatelessWidget {
           );
         }
         if (headerWidget != null && index == 0) {
-          return headerWidget;
+          return headerWidget!;
         }
 
         return itemBuilder(_, index -(headerWidget == null ? 0 : 1));
@@ -84,7 +84,7 @@ class JsListPaginatorView<T> extends StatelessWidget {
     );
   }
 
-  int _getItemCount() {
+  int? _getItemCount() {
     int countWithHeaderWidget = 0;
 
     if (itemCount != null) {
@@ -99,10 +99,10 @@ class JsListPaginatorView<T> extends StatelessWidget {
       return 0 + countWithHeaderWidget;
     }
 
-    if (page.currentPage < page.total / page.perPage) {
-      return page.data.length + 1 + countWithHeaderWidget;
+    if (page!.currentPage! < page!.total! / page!.perPage!) {
+      return page!.data!.length + 1 + countWithHeaderWidget;
     }
 
-    return page.data.length + countWithHeaderWidget;
+    return page!.data!.length + countWithHeaderWidget;
   }
 }

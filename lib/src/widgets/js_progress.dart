@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class JsProgress extends StatelessWidget {
-  final Color valueColor;
+  final Color? valueColor;
   final bool visible;
 
   const JsProgress({
-    Key key,
+    Key? key,
     this.valueColor,
     this.visible = true,
   }) : super(key: key);

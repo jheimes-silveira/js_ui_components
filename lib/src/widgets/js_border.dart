@@ -3,17 +3,17 @@ import 'package:flutter/material.dart';
 class JsBorder extends StatelessWidget {
   final double height;
   final double width;
-  final double distanceBorder;
-  final Widget child;
-  final Color color;
-  final double opacity;
-  final double opacityBorder;
+  final double? distanceBorder;
+  final Widget? child;
+  final Color? color;
+  final double? opacity;
+  final double? opacityBorder;
 
   final bool circle;
-  final BorderRadius borderRadius;
+  final BorderRadius? borderRadius;
 
   const JsBorder({
-    Key key,
+    Key? key,
     this.color,
     this.circle = true,
     this.child,
@@ -39,7 +39,7 @@ class JsBorder extends StatelessWidget {
             decoration: BoxDecoration(
               shape: circle ? BoxShape.circle : BoxShape.rectangle,
               borderRadius: borderRadius,
-              color: getColor(context).withOpacity(opacity ?? 0.1),
+              color: getColor(context)!.withOpacity(opacity ?? 0.1),
             ),
           ),
           Container(
@@ -49,17 +49,17 @@ class JsBorder extends StatelessWidget {
               shape: circle ? BoxShape.circle : BoxShape.rectangle,
               borderRadius: borderRadius,
               border: Border.all(
-                color: getColor(context).withOpacity(opacityBorder ?? 0.5),
+                color: getColor(context)!.withOpacity(opacityBorder ?? 0.5),
               ),
             ),
           ),
-          if (child != null) child,
+          if (child != null) child!,
         ],
       ),
     );
   }
 
-  Color getColor(BuildContext context) {
+  Color? getColor(BuildContext context) {
     if (color == null) {
       return Theme.of(context).primaryColor;
     }

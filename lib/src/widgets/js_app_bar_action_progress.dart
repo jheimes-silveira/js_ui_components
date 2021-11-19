@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class JsAppBarActionProgress extends StatelessWidget {
-  final EdgeInsets margin;
-  final Color backgroundColor;
-  final double strokeWidth;
+  final EdgeInsets? margin;
+  final Color? backgroundColor;
+  final double? strokeWidth;
 
   const JsAppBarActionProgress({
-    Key key,
+    Key? key,
     this.margin,
     this.backgroundColor,
     this.strokeWidth,

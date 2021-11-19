@@ -5,22 +5,23 @@ import 'js_progress.dart';
 
 class JsListView extends StatelessWidget {
   final _refreshController = RefreshController(initialRefresh: false);
-  final int itemCount;
-  final Widget emptyState;
-  final Widget loadingWidget;
-  final bool loading;
+  final int? itemCount;
+  final Widget? emptyState;
+  final Widget? loadingWidget;
+  final Widget? header;
+  final bool? loading;
   final bool shrinkWrap;
-  final EdgeInsetsGeometry padding;
-  final ScrollPhysics physics;
+  final EdgeInsetsGeometry? padding;
+  final ScrollPhysics? physics;
   final IndexedWidgetBuilder itemBuilder;
   final dynamic models;
-  final bool enablePullDown;
-  final Function onRefresh;
+  final bool? enablePullDown;
+  final Function? onRefresh;
   final bool reverse;
 
   JsListView({
-    Key key,
-    @required this.itemBuilder,
+    Key? key,
+    required this.itemBuilder,
     this.emptyState,
     this.itemCount,
     this.models,
@@ -31,6 +32,7 @@ class JsListView extends StatelessWidget {
     this.loadingWidget,
     this.enablePullDown,
     this.onRefresh,
+    this.header,
     this.reverse = false,
   }) : super(key: key);
 
@@ -38,22 +40,26 @@ class JsListView extends StatelessWidget {
   Widget build(BuildContext context) {
     int itemCount = _getItemCount();
 
-    if (loading != null && loading) {
+    if (header != null) {
+      itemCount++;
+    }
+
+    if (loading != null && loading!) {
       return loadingWidget ?? Center(child: JsProgress());
     }
 
     if ((itemCount == null || itemCount == 0) && emptyState != null) {
-      return emptyState;
+      return emptyState!;
     }
 
     return SmartRefresher(
-      enablePullDown: _getEnablePullDown(),
+      enablePullDown: _getEnablePullDown()!,
       controller: _refreshController,
       onRefresh: () async {
         _refreshController.resetNoData();
         // monitor network fetch
         if (this.onRefresh != null) {
-          await this.onRefresh();
+          await this.onRefresh!();
         }
 
         _refreshController.refreshCompleted();
@@ -64,24 +70,30 @@ class JsListView extends StatelessWidget {
         shrinkWrap: shrinkWrap,
         padding: padding,
         itemCount: itemCount,
-        itemBuilder: itemBuilder,
+        itemBuilder: (_, index) {
+          if (header != null && index == 0) {
+            return header!;
+          }
+
+          return itemBuilder(_, index - (header == null ? 0 : 1));
+        },
       ),
     );
   }
 
   int _getItemCount() {
     if (itemCount != null) {
-      return itemCount;
+      return itemCount!;
     }
 
     if (models is List) {
-      return models.length;
+      return models?.length ?? 0;
     }
 
     return 0;
   }
 
-  bool _getEnablePullDown() {
+  bool? _getEnablePullDown() {
     if (enablePullDown != null) {
       return enablePullDown;
     }

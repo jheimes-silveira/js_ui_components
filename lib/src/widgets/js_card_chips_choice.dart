@@ -1,17 +1,17 @@
-import 'package:chips_choice/chips_choice.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_select/smart_select.dart';
 
 class JsCardChipsChoise<T> extends StatelessWidget {
-  final ChipsChoice<T> chipsChoice;
-  final Function onTap;
-  final Widget icon;
-  final String label;
-  final EdgeInsets margin;
-  final EdgeInsets paddingContent;
+  final SmartSelect<T> chipsChoice;
+  final Function? onTap;
+  final Widget? icon;
+  final String? label;
+  final EdgeInsets? margin;
+  final EdgeInsets? paddingContent;
   final bool hideChipsChoice;
 
   const JsCardChipsChoise({
-    @required this.chipsChoice,
+    required this.chipsChoice,
     this.onTap,
     this.label,
     this.margin,
@@ -40,7 +40,7 @@ class JsCardChipsChoise<T> extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           InkWell(
-            onTap: onTap,
+            onTap: onTap as void Function()?,
             child: Container(
               padding: paddingContent ??
                   EdgeInsets.only(

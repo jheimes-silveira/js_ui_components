@@ -7,21 +7,19 @@ import 'js_button_text.dart';
 enum JsButtonType { text, outlined, elevated }
 
 class JsButton extends StatelessWidget {
-  final ButtonStyle style;
+  final ButtonStyle? style;
   final JsButtonType type;
-  final Widget child;
-  final String text;
-  final Function onPressed;
-  final Function onLongPress;
-  final EdgeInsets padding;
+  final Widget? child;
+  final String? text;
+  final Function? onPressed;
+  final Function? onLongPress;
   final bool enabled;
-  final bool loading;
+  final bool? loading;
 
   JsButton({
     this.type = JsButtonType.elevated,
     this.child,
     this.onPressed,
-    this.padding,
     this.text,
     this.enabled = true,
     this.loading,
@@ -39,7 +37,6 @@ class JsButton extends StatelessWidget {
         onLongPress: onLongPress,
         child: child,
         text: text,
-        padding: padding,
         style: style ?? Theme.of(context).outlinedButtonTheme.style,
       );
 
@@ -51,7 +48,6 @@ class JsButton extends StatelessWidget {
         onLongPress: onLongPress,
         child: child,
         text: text,
-        padding: padding,
         style: style ?? Theme.of(context).textButtonTheme.style,
       );
     return JsButtonElevated(
@@ -61,7 +57,6 @@ class JsButton extends StatelessWidget {
       onLongPress: onLongPress,
       child: child,
       text: text,
-      padding: padding,
       style: style ?? Theme.of(context).elevatedButtonTheme.style,
     );
   }

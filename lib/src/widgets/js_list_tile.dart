@@ -1,19 +1,25 @@
 import 'package:flutter/material.dart';
 
 class JsListTile extends StatelessWidget {
-  final Widget leading;
-  final Widget trailing;
-  final Widget title;
-  final Widget subtitle;
-  final Function() onTap;
+  final Widget? leading;
+  final Widget? trailing;
+  final Widget? title;
+  final Widget? subtitle;
+  final bool? selected;
+  final Color? selectedTileColor;
+  final Function()? onTap;
+  final GestureLongPressCallback? onLongPress;
 
   const JsListTile({
-    Key key,
+    Key? key,
     this.leading,
     this.trailing,
     this.title,
     this.subtitle,
     this.onTap,
+    this.onLongPress,
+    this.selected,
+    this.selectedTileColor,
   }) : super(key: key);
 
   @override
@@ -25,12 +31,14 @@ class JsListTile extends StatelessWidget {
         bottom: 8,
         top: 8,
       ),
-      horizontalTitleGap: 0,
+      selected: selected ?? false,
+      selectedTileColor: selectedTileColor,
       leading: leading,
       trailing: trailing,
       title: title,
       subtitle: subtitle,
       onTap: onTap,
+      onLongPress: onLongPress,
     );
   }
 }

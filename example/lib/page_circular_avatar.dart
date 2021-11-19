@@ -22,7 +22,7 @@ class _PageCircularAvatarState extends State<PageCircularAvatar> {
                 JsNetworkImage(
                   imageUrl:
                       "https://s3.amazonaws.com/igui-ecologia/wp-content/uploads/2018/04/not-2-2604-1.jpg",
-                  circular: false,
+                
                 ),
                 JsNetworkImage(
                   imageUrl:

@@ -10,8 +10,8 @@ class JsListShimmer extends StatelessWidget {
         horizontal: 16.0,
       ),
       child: Shimmer.fromColors(
-        baseColor: Colors.grey[400],
-        highlightColor: Colors.grey[100],
+        baseColor: Colors.grey[400]!,
+        highlightColor: Colors.grey[100]!,
         child: ListView.builder(
           shrinkWrap: true,
           itemBuilder: (_, __) => Padding(

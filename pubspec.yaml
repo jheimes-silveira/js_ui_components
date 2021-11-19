@@ -1,27 +1,26 @@
 name: js_ui_components
 description: A new Flutter package project.
-version: 0.0.2+27
+version: 0.0.3
 author: Jheime Silveira
 homepage: https://github.com/jheimes-silveira/js_ui_components.git
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: '>=2.12.0 <3.0.0'
 
 dependencies:
-  chips_choice: ^2.0.1
+  smart_select: ^4.3.2
   pull_to_refresh: ^2.0.0
-  cached_network_image: ^3.1.0-alpha.1
+  cached_network_image: ^3.1.0+1
   shimmer: ^2.0.0
-  flutter_spinkit: ^5.0.0
-  flutter_mobx:
-  mobx:
-  octo_image: ^1.0.0+1
+  flutter_spinkit: ^5.1.0
+  flutter_mobx: ^2.0.2
+  mobx: ^2.0.5
   flutter:
     sdk: flutter
 
 dev_dependencies:
-  mobx_codegen:
-  build_runner:
+  mobx_codegen: ^2.0.4
+  build_runner: ^2.1.5
   flutter_test:
     sdk: flutter
 

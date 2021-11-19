@@ -9,35 +9,35 @@ class ObservablePaginator<T> = _ObservablePaginatorBase
 
 abstract class _ObservablePaginatorBase<T> with Store {
   @observable
-  ObservableList data;
+  ObservableList? data;
   @observable
-  int currentPage;
+  int? currentPage;
   @observable
-  String firstPageUrl;
+  String? firstPageUrl;
   @observable
-  int from;
+  int? from;
   @observable
-  bool lastPage;
+  bool? lastPage;
   @observable
-  String lastPageUrl;
+  String? lastPageUrl;
   @observable
-  String nextPageUrl;
+  String? nextPageUrl;
   @observable
-  String path;
+  String? path;
   @observable
   int perPage;
   @observable
-  String prevPageUrl;
+  String? prevPageUrl;
   @observable
-  int to;
+  int? to;
   @observable
   int total;
   @observable
-  String sort;
+  String? sort;
   @observable
-  bool asc;
+  bool? asc;
   @observable
-  String term;
+  String? term;
 
   _ObservablePaginatorBase({
     this.currentPage = 0,
@@ -61,7 +61,7 @@ abstract class _ObservablePaginatorBase<T> with Store {
     }
   }
 
-  _ObservablePaginatorBase.fromJson(
+  fromJson(
     Map<String, dynamic> json,
     ObservableList data,
   ) {
@@ -70,23 +70,25 @@ abstract class _ObservablePaginatorBase<T> with Store {
     setCurrentPage(json['current_page']);
     setFirstPageUrl(json['first_page_url']);
     setFrom(json['from']);
-    setLastPage(json['last_page']);
+    if (json['last_page'] is bool) setLastPage(json['last_page']);
     setLastPageUrl(json['last_page_url']);
     setNextPageUrl(json['next_page_url']);
     setPath(json['path']);
     setPerPage(json['per_page']);
     setPrevPageUrl(json['prev_page_url']);
     setTo(json['to']);
-    setTotal(json['total']);
+    if (json['total'] != null) setTotal(json['total']);
   }
 
   @action
   merge(ObservablePaginator page) {
+    if (page == null) return;
+    
     if (page.currentPage == 0 || page.currentPage == 1) {
       data = page.data;
     } else {
-      page.data.forEach((element) {
-        this.data.add(element);
+      page.data!.forEach((element) {
+        this.data!.add(element);
       });
     }
 
@@ -110,33 +112,33 @@ abstract class _ObservablePaginatorBase<T> with Store {
 
   @action
   void dataAdd(item) {
-    this.data.add(item);
+    this.data!.add(item);
     this.total++;
   }
 
   @action
   void dataInsert(int index, item) {
-    this.data.insert(index, item);
+    this.data!.insert(index, item);
     this.total++;
   }
 
   @action
-  setCurrentPage(int currentPage) {
+  setCurrentPage(int? currentPage) {
     this.currentPage = currentPage;
   }
 
   @action
-  setFirstPageUrl(String firstPageUrl) {
+  setFirstPageUrl(String? firstPageUrl) {
     this.firstPageUrl = firstPageUrl;
   }
 
   @action
-  setFrom(int from) {
+  setFrom(int? from) {
     this.from = from;
   }
 
   @action
-  setLastPage(bool lastPage) {
+  setLastPage(bool? lastPage) {
     try {
       this.lastPage = lastPage;
     } catch (e) {
@@ -145,17 +147,17 @@ abstract class _ObservablePaginatorBase<T> with Store {
   }
 
   @action
-  setLastPageUrl(String lastPageUrl) {
+  setLastPageUrl(String? lastPageUrl) {
     this.lastPageUrl = lastPageUrl;
   }
 
   @action
-  setNextPageUrl(String nextPageUrl) {
+  setNextPageUrl(String? nextPageUrl) {
     this.nextPageUrl = nextPageUrl;
   }
 
   @action
-  setPath(String path) {
+  setPath(String? path) {
     this.path = path;
   }
 
@@ -165,12 +167,12 @@ abstract class _ObservablePaginatorBase<T> with Store {
   }
 
   @action
-  setPrevPageUrl(String prevPageUrl) {
+  setPrevPageUrl(String? prevPageUrl) {
     this.prevPageUrl = prevPageUrl;
   }
 
   @action
-  setTo(int to) {
+  setTo(int? to) {
     this.to = to;
   }
 
@@ -197,9 +199,7 @@ abstract class _ObservablePaginatorBase<T> with Store {
   String request() {
     String params = "";
 
-    if (perPage != null) {
-      params += "${params.isEmpty ? '?' : '&'}per_page=$perPage";
-    }
+    params += "${params.isEmpty ? '?' : '&'}per_page=$perPage";
 
     if (currentPage != null) {
       params += "${params.isEmpty ? '?' : '&'}page=$currentPage";

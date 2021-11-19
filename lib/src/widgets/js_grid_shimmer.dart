@@ -7,8 +7,8 @@ class JsGridShimmer extends StatelessWidget {
     return Container(
     
       child: Shimmer.fromColors(
-        baseColor: Colors.grey[400],
-        highlightColor: Colors.grey[100],
+        baseColor: Colors.grey[400]!,
+        highlightColor: Colors.grey[100]!,
         child: GridView.count(
           shrinkWrap: true,
 

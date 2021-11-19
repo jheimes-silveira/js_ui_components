@@ -1,21 +1,21 @@
 library paginator;
 
 class Paginator<T> {
-  List<T> data;
-  int currentPage;
-  String firstPageUrl;
-  int from;
-  int lastPage;
-  String lastPageUrl;
-  String nextPageUrl;
-  String path;
-  int perPage;
-  String prevPageUrl;
-  int to;
-  int total;
-  String sort;
-  bool asc;
-  String term;
+  List<T>? data;
+  int? currentPage;
+  String? firstPageUrl;
+  int? from;
+  int? lastPage;
+  String? lastPageUrl;
+  String? nextPageUrl;
+  String? path;
+  int? perPage;
+  String? prevPageUrl;
+  int? to;
+  int? total;
+  String? sort;
+  bool? asc;
+  String? term;
 
   Paginator({
     this.currentPage = 0,
@@ -56,8 +56,8 @@ class Paginator<T> {
   }
 
   merge(Paginator<T> page) {
-    page.data.forEach((element) {
-      this.data.add(element);
+    page.data!.forEach((element) {
+      this.data!.add(element);
     });
 
     currentPage = page.currentPage;

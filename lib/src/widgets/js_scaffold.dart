@@ -3,35 +3,45 @@ import 'package:flutter/material.dart';
 import '../../js_ui_components.dart';
 
 class JsScaffold extends StatelessWidget {
-  final AppBar appBar;
+  final Key? key;
+  final AppBar? appBar;
   final Widget body;
-  final Widget widgetLoading;
-  final Widget widgetEmptyState;
-  final bool loading;
-  final String emptyState;
-  final String error;
-
+  final Widget? widgetLoading;
+  final Widget? widgetEmptyState;
+  final bool? loading;
+  final String? emptyState;
+  final String? error;
+  final Widget? floatingActionButton;
+  final Widget? bottomNavigationBar;
+  final FloatingActionButtonLocation? floatingActionButtonLocation;
   const JsScaffold({
-    Key key,
+    this.key,
     this.appBar,
-    @required this.body,
+    required this.body,
     this.loading,
     this.emptyState,
     this.error,
     this.widgetLoading,
     this.widgetEmptyState,
-  }) : super(key: key);
+    this.floatingActionButton,
+    this.bottomNavigationBar,
+    this.floatingActionButtonLocation,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: key,
       appBar: appBar,
       body: _buildBody(context),
+      floatingActionButtonLocation: floatingActionButtonLocation,
+      floatingActionButton: floatingActionButton,
+      bottomNavigationBar: bottomNavigationBar,
     );
   }
 
   Widget _buildBody(BuildContext context) {
-    if (loading != null && loading) {
+    if (loading != null && loading!) {
       return JsProgress();
     }
 
@@ -44,11 +54,12 @@ class JsScaffold extends StatelessWidget {
     }
 
     if (emptyState != null) {
-      return Center(
-        child: JsEmptyState(
-          subtitle: emptyState,
-        ),
-      );
+      return widgetEmptyState ??
+          Center(
+            child: JsEmptyState(
+              subtitle: emptyState,
+            ),
+          );
     }
 
     return body;

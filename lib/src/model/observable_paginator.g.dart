@@ -12,13 +12,13 @@ mixin _$ObservablePaginator<T> on _ObservablePaginatorBase<T>, Store {
   final _$dataAtom = Atom(name: '_ObservablePaginatorBase.data');
 
   @override
-  ObservableList<dynamic> get data {
+  ObservableList<dynamic>? get data {
     _$dataAtom.reportRead();
     return super.data;
   }
 
   @override
-  set data(ObservableList<dynamic> value) {
+  set data(ObservableList<dynamic>? value) {
     _$dataAtom.reportWrite(value, super.data, () {
       super.data = value;
     });
@@ -27,13 +27,13 @@ mixin _$ObservablePaginator<T> on _ObservablePaginatorBase<T>, Store {
   final _$currentPageAtom = Atom(name: '_ObservablePaginatorBase.currentPage');
 
   @override
-  int get currentPage {
+  int? get currentPage {
     _$currentPageAtom.reportRead();
     return super.currentPage;
   }
 
   @override
-  set currentPage(int value) {
+  set currentPage(int? value) {
     _$currentPageAtom.reportWrite(value, super.currentPage, () {
       super.currentPage = value;
     });
@@ -43,13 +43,13 @@ mixin _$ObservablePaginator<T> on _ObservablePaginatorBase<T>, Store {
       Atom(name: '_ObservablePaginatorBase.firstPageUrl');
 
   @override
-  String get firstPageUrl {
+  String? get firstPageUrl {
     _$firstPageUrlAtom.reportRead();
     return super.firstPageUrl;
   }
 
   @override
-  set firstPageUrl(String value) {
+  set firstPageUrl(String? value) {
     _$firstPageUrlAtom.reportWrite(value, super.firstPageUrl, () {
       super.firstPageUrl = value;
     });
@@ -58,13 +58,13 @@ mixin _$ObservablePaginator<T> on _ObservablePaginatorBase<T>, Store {
   final _$fromAtom = Atom(name: '_ObservablePaginatorBase.from');
 
   @override
-  int get from {
+  int? get from {
     _$fromAtom.reportRead();
     return super.from;
   }
 
   @override
-  set from(int value) {
+  set from(int? value) {
     _$fromAtom.reportWrite(value, super.from, () {
       super.from = value;
     });
@@ -73,13 +73,13 @@ mixin _$ObservablePaginator<T> on _ObservablePaginatorBase<T>, Store {
   final _$lastPageAtom = Atom(name: '_ObservablePaginatorBase.lastPage');
 
   @override
-  bool get lastPage {
+  bool? get lastPage {
     _$lastPageAtom.reportRead();
     return super.lastPage;
   }
 
   @override
-  set lastPage(bool value) {
+  set lastPage(bool? value) {
     _$lastPageAtom.reportWrite(value, super.lastPage, () {
       super.lastPage = value;
     });
@@ -88,13 +88,13 @@ mixin _$ObservablePaginator<T> on _ObservablePaginatorBase<T>, Store {
   final _$lastPageUrlAtom = Atom(name: '_ObservablePaginatorBase.lastPageUrl');
 
   @override
-  String get lastPageUrl {
+  String? get lastPageUrl {
     _$lastPageUrlAtom.reportRead();
     return super.lastPageUrl;
   }
 
   @override
-  set lastPageUrl(String value) {
+  set lastPageUrl(String? value) {
     _$lastPageUrlAtom.reportWrite(value, super.lastPageUrl, () {
       super.lastPageUrl = value;
     });
@@ -103,13 +103,13 @@ mixin _$ObservablePaginator<T> on _ObservablePaginatorBase<T>, Store {
   final _$nextPageUrlAtom = Atom(name: '_ObservablePaginatorBase.nextPageUrl');
 
   @override
-  String get nextPageUrl {
+  String? get nextPageUrl {
     _$nextPageUrlAtom.reportRead();
     return super.nextPageUrl;
   }
 
   @override
-  set nextPageUrl(String value) {
+  set nextPageUrl(String? value) {
     _$nextPageUrlAtom.reportWrite(value, super.nextPageUrl, () {
       super.nextPageUrl = value;
     });
@@ -118,13 +118,13 @@ mixin _$ObservablePaginator<T> on _ObservablePaginatorBase<T>, Store {
   final _$pathAtom = Atom(name: '_ObservablePaginatorBase.path');
 
   @override
-  String get path {
+  String? get path {
     _$pathAtom.reportRead();
     return super.path;
   }
 
   @override
-  set path(String value) {
+  set path(String? value) {
     _$pathAtom.reportWrite(value, super.path, () {
       super.path = value;
     });
@@ -148,13 +148,13 @@ mixin _$ObservablePaginator<T> on _ObservablePaginatorBase<T>, Store {
   final _$prevPageUrlAtom = Atom(name: '_ObservablePaginatorBase.prevPageUrl');
 
   @override
-  String get prevPageUrl {
+  String? get prevPageUrl {
     _$prevPageUrlAtom.reportRead();
     return super.prevPageUrl;
   }
 
   @override
-  set prevPageUrl(String value) {
+  set prevPageUrl(String? value) {
     _$prevPageUrlAtom.reportWrite(value, super.prevPageUrl, () {
       super.prevPageUrl = value;
     });
@@ -163,13 +163,13 @@ mixin _$ObservablePaginator<T> on _ObservablePaginatorBase<T>, Store {
   final _$toAtom = Atom(name: '_ObservablePaginatorBase.to');
 
   @override
-  int get to {
+  int? get to {
     _$toAtom.reportRead();
     return super.to;
   }
 
   @override
-  set to(int value) {
+  set to(int? value) {
     _$toAtom.reportWrite(value, super.to, () {
       super.to = value;
     });
@@ -193,13 +193,13 @@ mixin _$ObservablePaginator<T> on _ObservablePaginatorBase<T>, Store {
   final _$sortAtom = Atom(name: '_ObservablePaginatorBase.sort');
 
   @override
-  String get sort {
+  String? get sort {
     _$sortAtom.reportRead();
     return super.sort;
   }
 
   @override
-  set sort(String value) {
+  set sort(String? value) {
     _$sortAtom.reportWrite(value, super.sort, () {
       super.sort = value;
     });
@@ -208,13 +208,13 @@ mixin _$ObservablePaginator<T> on _ObservablePaginatorBase<T>, Store {
   final _$ascAtom = Atom(name: '_ObservablePaginatorBase.asc');
 
   @override
-  bool get asc {
+  bool? get asc {
     _$ascAtom.reportRead();
     return super.asc;
   }
 
   @override
-  set asc(bool value) {
+  set asc(bool? value) {
     _$ascAtom.reportWrite(value, super.asc, () {
       super.asc = value;
     });
@@ -223,13 +223,13 @@ mixin _$ObservablePaginator<T> on _ObservablePaginatorBase<T>, Store {
   final _$termAtom = Atom(name: '_ObservablePaginatorBase.term');
 
   @override
-  String get term {
+  String? get term {
     _$termAtom.reportRead();
     return super.term;
   }
 
   @override
-  set term(String value) {
+  set term(String? value) {
     _$termAtom.reportWrite(value, super.term, () {
       super.term = value;
     });
@@ -283,7 +283,7 @@ mixin _$ObservablePaginator<T> on _ObservablePaginatorBase<T>, Store {
   }
 
   @override
-  dynamic setCurrentPage(int currentPage) {
+  dynamic setCurrentPage(int? currentPage) {
     final _$actionInfo = _$_ObservablePaginatorBaseActionController.startAction(
         name: '_ObservablePaginatorBase.setCurrentPage');
     try {
@@ -294,7 +294,7 @@ mixin _$ObservablePaginator<T> on _ObservablePaginatorBase<T>, Store {
   }
 
   @override
-  dynamic setFirstPageUrl(String firstPageUrl) {
+  dynamic setFirstPageUrl(String? firstPageUrl) {
     final _$actionInfo = _$_ObservablePaginatorBaseActionController.startAction(
         name: '_ObservablePaginatorBase.setFirstPageUrl');
     try {
@@ -305,7 +305,7 @@ mixin _$ObservablePaginator<T> on _ObservablePaginatorBase<T>, Store {
   }
 
   @override
-  dynamic setFrom(int from) {
+  dynamic setFrom(int? from) {
     final _$actionInfo = _$_ObservablePaginatorBaseActionController.startAction(
         name: '_ObservablePaginatorBase.setFrom');
     try {
@@ -316,7 +316,7 @@ mixin _$ObservablePaginator<T> on _ObservablePaginatorBase<T>, Store {
   }
 
   @override
-  dynamic setLastPage(bool lastPage) {
+  dynamic setLastPage(bool? lastPage) {
     final _$actionInfo = _$_ObservablePaginatorBaseActionController.startAction(
         name: '_ObservablePaginatorBase.setLastPage');
     try {
@@ -327,7 +327,7 @@ mixin _$ObservablePaginator<T> on _ObservablePaginatorBase<T>, Store {
   }
 
   @override
-  dynamic setLastPageUrl(String lastPageUrl) {
+  dynamic setLastPageUrl(String? lastPageUrl) {
     final _$actionInfo = _$_ObservablePaginatorBaseActionController.startAction(
         name: '_ObservablePaginatorBase.setLastPageUrl');
     try {
@@ -338,7 +338,7 @@ mixin _$ObservablePaginator<T> on _ObservablePaginatorBase<T>, Store {
   }
 
   @override
-  dynamic setNextPageUrl(String nextPageUrl) {
+  dynamic setNextPageUrl(String? nextPageUrl) {
     final _$actionInfo = _$_ObservablePaginatorBaseActionController.startAction(
         name: '_ObservablePaginatorBase.setNextPageUrl');
     try {
@@ -349,7 +349,7 @@ mixin _$ObservablePaginator<T> on _ObservablePaginatorBase<T>, Store {
   }
 
   @override
-  dynamic setPath(String path) {
+  dynamic setPath(String? path) {
     final _$actionInfo = _$_ObservablePaginatorBaseActionController.startAction(
         name: '_ObservablePaginatorBase.setPath');
     try {
@@ -371,7 +371,7 @@ mixin _$ObservablePaginator<T> on _ObservablePaginatorBase<T>, Store {
   }
 
   @override
-  dynamic setPrevPageUrl(String prevPageUrl) {
+  dynamic setPrevPageUrl(String? prevPageUrl) {
     final _$actionInfo = _$_ObservablePaginatorBaseActionController.startAction(
         name: '_ObservablePaginatorBase.setPrevPageUrl');
     try {
@@ -382,7 +382,7 @@ mixin _$ObservablePaginator<T> on _ObservablePaginatorBase<T>, Store {
   }
 
   @override
-  dynamic setTo(int to) {
+  dynamic setTo(int? to) {
     final _$actionInfo = _$_ObservablePaginatorBaseActionController.startAction(
         name: '_ObservablePaginatorBase.setTo');
     try {
